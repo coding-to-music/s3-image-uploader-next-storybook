@@ -1,4 +1,5 @@
 {
+  "name": "s3-image-uploader-next-storybook",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -7,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "deploy": "git add . && git commit -m Build && git push",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
