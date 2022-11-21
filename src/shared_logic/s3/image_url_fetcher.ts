@@ -1,6 +1,8 @@
 import { ListObjectsCommand, S3Client } from '@aws-sdk/client-s3';
 import { createImageUrl } from './image_url_creator';
 
+console.log("image_url_fetcher: createImage_Url: ");
+
 async function fetchObjectKeys(client: S3Client): Promise<string[]> {
   const command = new ListObjectsCommand({
     Bucket: process.env.AWS_S3_BUCKET_NAME,
