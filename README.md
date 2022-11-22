@@ -64,3 +64,42 @@ Launch storybook:
 ```
 yarn storybook
 ```
+
+## Errors while trying to get it to work
+
+```
+image_url_fetcher: await client.send(command) RRRRRRRRRRRRRRRRRR
+TypeError: Cannot read properties of undefined (reading 'map')
+    at fetchObjectKeys (webpack-internal:///./src/shared_logic/s3/image_url_fetcher.ts:25:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async fetchImageUrlList (webpack-internal:///./src/shared_logic/s3/image_url_fetcher.ts:37:24)
+    at async getStaticProps (webpack-internal:///./src/pages/index.tsx:171:26)
+    at async Object.renderToHTML (/mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/render.js:386:20)
+    at async doRender (/mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/base-server.js:687:38)
+    at async cacheEntry.responseCache.get.isManualRevalidate.isManualRevalidate (/mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/base-server.js:796:28)
+    at async /mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/response-cache/index.js:80:36
+image_url_fetcher: await client.send(command) RRRRRRRRRRRRRRRRRR
+image_url_fetcher: objectKeys XXXXXXXXXXXXXXX
+image_url_fetcher: objectKeys  undefined
+image_url_fetcher: objectKeys XXXXXXXXXXXXXXX
+wait  - compiling /_error (client and server)...
+error - src/shared_logic/s3/image_url_fetcher.ts (43:15) @ fetchImageUrlList
+error - TypeError: Cannot read properties of undefined (reading 'map')
+    at fetchImageUrlList (webpack-internal:///./src/shared_logic/s3/image_url_fetcher.ts:41:55)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getStaticProps (webpack-internal:///./src/pages/index.tsx:171:26)
+    at async Object.renderToHTML (/mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/render.js:386:20)
+    at async doRender (/mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/base-server.js:687:38)
+    at async cacheEntry.responseCache.get.isManualRevalidate.isManualRevalidate (/mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/base-server.js:796:28)
+    at async /mnt/volume_nyc1_01/s3-image-uploader-next-storybook/node_modules/next/dist/server/response-cache/index.js:80:36 {
+  page: '/'
+}
+  41 |   console.log('image_url_fetcher: objectKeys XXXXXXXXXXXXXXX');
+  42 |   const imageUrlList = await Promise.all(
+> 43 |     objectKeys.map(async (key) => await createImageUrl({ imagePath: key, secondsToExpire })),
+     |               ^
+  44 |   );
+  45 | 
+  46 |   return imageUrlList;
+event - compiled client and server successfully in 758 ms (806 modules)
+```
